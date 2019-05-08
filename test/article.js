@@ -11,6 +11,23 @@ let should = chai.should()
 
 chai.use(chaiHttp)
 
+describe('POST /article/new', ()=>{
+    it('it should POST a new article with correct dummy data',(done)=>{
+        let data = {
+            id: 1,
+            title: 'ABC',
+            content: 'mksdfnks0=i2-nvjrvs'
+        }
+        chai.request(app)
+            .post('/article/new')
+            .send(data)
+            .end((err, res)=>{
+                res.should.have.status(200)
+            done();
+            })
+    })
+})
+
 describe('GET /article', ()=>{
     it('it should GET all the articles',(done)=>{
         chai.request(app)
@@ -24,7 +41,7 @@ describe('GET /article', ()=>{
 
     it('it should GET title ABC only', (done)=>{
         let data = {
-            title: 'DCE'
+            title: 'ABC'
         }
         chai.request(app)
             .get('/article')
@@ -32,26 +49,10 @@ describe('GET /article', ()=>{
             .end((err, res)=>{
                 if(err){console.err(err)}
                 res.should.have.status(200)
-                res.body[0].title.should.have.equal('DCE')
+                res.body[0].title.should.have.equal('ABC')
                 done()
             })
 
     })
 })
 
-describe('POST /article/new', ()=>{
-    it('it should POST a new article with correct dummy data',(done)=>{
-        let data = {
-            id: 1,
-            title: 'DCE',
-            content: 'mksdfnks0=i2-nvjrvs'
-        }
-        chai.request(app)
-            .post('/article/new')
-            .send(data)
-            .end((err, res)=>{
-                res.should.have.status(200)
-            done();
-            })
-    })
-})
