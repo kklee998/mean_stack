@@ -4,15 +4,17 @@ stages:
   - test
   - deploy
 
-services:
-    - mongo:latest
 
-variables:
-  MONGO_URI: 'mongodb://mongo/test'
-  NODE_ENV: 'test'
 
 test:
   stage: test
+
+  services:
+    - mongo:latest
+
+  variables:
+    MONGO_URI: 'mongodb://mongo/test'
+    NODE_ENV: 'test'
 
   script:
     - npm install

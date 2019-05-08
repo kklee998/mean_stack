@@ -33,8 +33,9 @@ describe('GET /article', ()=>{
                 if(err){console.err(err)}
                 res.should.have.status(200)
                 res.body[0].title.should.have.equal('DCE')
+                done()
             })
-            done()
+
     })
 })
 
