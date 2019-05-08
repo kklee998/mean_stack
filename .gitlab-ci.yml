@@ -6,6 +6,9 @@ stages:
 
 test:
   stage: test
+  variables:
+    MONGO_URI: 'mongodb://localhost/test'
+    NODE_ENV: 'test'
   services:
     - mongo:latest
   script:
