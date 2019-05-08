@@ -20,6 +20,21 @@ describe('GET /article', ()=>{
                 res.body.should.be.a('array');
             done();
             })
+    }),
+
+    it('it should GET title ABC only', (done)=>{
+        let data = {
+            title: 'DCE'
+        }
+        chai.request(app)
+            .get('/article')
+            .send(data)
+            .end((err, res)=>{
+                if(err){console.err(err)}
+                res.should.have.status(200)
+                res.body[0].title.should.have.equal('DCE')
+            })
+            done()
     })
 })
 
@@ -27,7 +42,7 @@ describe('POST /article/new', ()=>{
     it('it should POST a new article with correct dummy data',(done)=>{
         let data = {
             id: 1,
-            title: 'Test',
+            title: 'DCE',
             content: 'mksdfnks0=i2-nvjrvs'
         }
         chai.request(app)

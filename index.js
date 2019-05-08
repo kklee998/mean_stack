@@ -18,6 +18,9 @@ const port = 3000
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({extended: false}))
 app.use('/',article)
-module.exports = app.listen(port, function() {
+app.listen(port, function() {
     console.log('Listening on port', port)
 })
+
+
+module.exports = app

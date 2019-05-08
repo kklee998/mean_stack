@@ -15,7 +15,7 @@ exports.new_article = function (req,res,next){
 }
 
 exports.article = function (req, res,next){
-    Article.find({}, function(err, article){
+    Article.find(req.body, function(err, article){
         if(err){return next(err)}
         res.status(200).send(article)
     })
