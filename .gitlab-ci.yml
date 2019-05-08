@@ -1,0 +1,12 @@
+image: node:latest
+
+stages:
+  - test
+  - deploy
+
+test:
+  stage: test
+  services: mongo:latest
+  script:
+    npm install
+    npm test
