@@ -9,5 +9,5 @@ test:
   services:
     - mongo:latest
   script:
-    npm install
-    npm test
+    - npm install
+    - npm test
